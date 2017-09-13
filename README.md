@@ -1,0 +1,2 @@
+# JobNotesMacDown
+取代笔墨记录那些在工作时间的笔记与ideas
