@@ -16,7 +16,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 ```
-* 2.Nullability 借口中为了防止写一大堆 nonnull，Foundation 还提供了一对儿宏，包在里面的对象默认加 nonnull 修饰符，只需要把 nullable 的指出来就行，黑话叫 Audited Region（审核区）
+* 2.Nullability ， WWDC 2015 推出的新特性之一，接口中为了防止写一大堆 nonnull，Foundation 还提供了一对儿宏，包在里面的对象默认加 nonnull 修饰符，只需要把 nullable 的指出来就行，黑话叫 Audited Region（审核区）
 ```
 NS_ASSUME_NONNULL_BEGIN
 @interface Sark : NSObject
