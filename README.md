@@ -16,8 +16,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 ```
-* 2.Nullability 
-···
+* 2.Nullability 借口中为了防止写一大堆 nonnull，Foundation 还提供了一对儿宏，包在里面的对象默认加 nonnull 修饰符，只需要把 nullable 的指出来就行，黑话叫 Audited Region（审核区）
+```
 NS_ASSUME_NONNULL_BEGIN
 @interface Sark : NSObject
 @property (nonatomic, copy, nullable) NSString *workingCompany;
@@ -25,4 +25,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString *)gayFriend;
 @end
 NS_ASSUME_NONNULL_END
-···
+```
