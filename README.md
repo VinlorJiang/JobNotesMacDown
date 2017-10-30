@@ -65,3 +65,30 @@ NSLinkAttributeName                设置链接属性，点击后调用浏览器
 NSAttachmentAttributeName          设置文本附件,取值为NSTextAttachment对象,常用于文字图片混排  
 NSParagraphStyleAttributeName      设置文本段落排版格式，取值为 NSParagraphStyle 对象  
 ```
+代码展示：
+```
+NSRange range = NSMakeRange(0, title.length);
+    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:title];
+    //设置下划线
+    [attribtStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:range];
+    //字体颜色
+    [attribtStr addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:range];
+    label.attributedText = attribtStr;
+```
+```
+不一定要用UILabel展示，UITextView和UITextField都可以展示
+```
+如果需要展示的字符串是带有HTML标签的富文本也可以同NSMutableAttributedString进行展示，代码如下：
+```
+NSString *path = [[NSBundle mainBundle] pathForResource:@"html" ofType:@"txt"];
+NSString *content = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    //修改html中图片的宽度
+content = [NSString stringWithFormat:@"<head><style>img{width:%f !important;height:auto}</style></head>%@",CGRectGetWidth(self.view.frame),content];
+    //设置富文本
+NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithData:[content dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+self.textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame) - 5, CGRectGetHeight(self.view.frame))];
+[self.textView setBackgroundColor:[UIColor whiteColor]];
+self.textView.editable = NO;
+self.textView.attributedText = attrStr;
+[self.view addSubview:self.textView];
+```
