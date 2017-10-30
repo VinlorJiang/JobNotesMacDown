@@ -28,3 +28,10 @@ NS_ASSUME_NONNULL_END
 ```
 * 3）static，static关键字声明的变量必须放在implementation外面，或者方法中，如果不为它赋值默认为0或nil，它只在程序开机“初始化一次”。
   * 修饰局部变量
+
+## 2017.10.30 周一
+* 1）NSMutableAttributedString文本样式设置以及富文本展示：在项目开发的过程中或多或少都有遇到过在一段文字中某个字符串需要添加下划线、颜色不同于其他文本、背景色、删除线、行间距等等需求。而NSMutableAttributedString可以帮助你实现这些需求：
+···
+通过以下方法初始化NSMutableAttributedString
+- (instancetype)initWithString:(NSString *)str;
+···
